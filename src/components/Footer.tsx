@@ -5,57 +5,11 @@ import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 import Image from 'next/image';
 
-const mosaicPhotos = [
-  '/gallery/WhatsApp Image 2025-12-31 at 19.03.07.jpeg',
-  '/gallery/WhatsApp Image 2025-12-31 at 19.03.09.jpeg',
-  '/gallery/WhatsApp Image 2025-12-31 at 19.03.11.jpeg',
-  '/gallery/WhatsApp Image 2025-12-31 at 19.03.13.jpeg',
-  '/gallery/WhatsApp Image 2025-12-31 at 19.03.18.jpeg',
-  '/gallery/WhatsApp Image 2025-12-31 at 19.03.22.jpeg',
-  '/gallery/WhatsApp Image 2025-12-31 at 19.03.23.jpeg',
-  '/gallery/WhatsApp Image 2025-12-31 at 19.03.24.jpeg',
-];
-
 export default function Footer() {
   const t = useTranslations('footer');
 
   return (
     <footer className="relative bg-gradient-to-b from-[#F0F7FF] to-[#D4EBF8]">
-      {/* Photo mosaic strip */}
-      <div className="relative overflow-hidden">
-        {/* Gradient overlays for fade effect */}
-        <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#F0F7FF] to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#F0F7FF] to-transparent z-10" />
-
-        <motion.div
-          className="flex gap-2 py-4"
-          initial={{ x: 0 }}
-          animate={{ x: '-50%' }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-        >
-          {/* Duplicate photos for seamless loop */}
-          {[...mosaicPhotos, ...mosaicPhotos].map((src, index) => (
-            <motion.div
-              key={index}
-              className="relative flex-shrink-0 w-20 h-20 md:w-28 md:h-28 rounded-lg overflow-hidden shadow-md"
-              whileHover={{ scale: 1.1, zIndex: 20 }}
-            >
-              <Image
-                src={src}
-                alt={`Memory ${index + 1}`}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-[#5BA3D9]/0 hover:bg-[#5BA3D9]/10 transition-colors" />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
       {/* Decorative top border */}
       <div className="h-px bg-gradient-to-r from-transparent via-[#B8D8F0] to-transparent" />
 

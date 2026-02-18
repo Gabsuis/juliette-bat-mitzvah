@@ -8,11 +8,10 @@ import Hero from '@/components/Hero';
 import Events from '@/components/Events';
 import RSVPForm from '@/components/RSVPForm';
 import Footer from '@/components/Footer';
-import SectionDivider from '@/components/SectionDivider';
 import { Star, Calendar } from 'lucide-react';
 
-// Bat Mitzvah date: July 26, 2026 at 6:00 PM
-const BAT_MITZVAH_DATE = new Date(2026, 6, 26, 18, 0, 0);
+// Bat Mitzvah date: June 18, 2026 at 9:30 AM
+const BAT_MITZVAH_DATE = new Date(2026, 5, 18, 9, 30, 0);
 
 // Floating Countdown Component
 function FloatingCountdown() {
@@ -146,13 +145,9 @@ export default function HomePage() {
 
       <Hero />
 
-      <SectionDivider imageSrc="/gallery/DSC06340.JPG" alt="Together" />
-
       <Suspense fallback={null}>
         <Events />
       </Suspense>
-
-      <SectionDivider imageSrc="/gallery/WhatsApp Image 2026-01-10 at 22.35.01.jpeg" alt="Our adventure"/>
 
       <Suspense fallback={null}>
         <RSVPForm />

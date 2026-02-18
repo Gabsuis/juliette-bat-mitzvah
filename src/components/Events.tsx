@@ -6,40 +6,44 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 import {
   BookOpen,
-  Wine,
   PartyPopper,
+  Home,
+  GlassWater,
   Star,
   Clock,
   Calendar,
   Sparkles,
   MapPin,
   X,
-  ExternalLink,
-  Shirt
+  ExternalLink
 } from 'lucide-react';
 
 const eventIcons = {
   service: BookOpen,
-  kiddush: Wine,
   party: PartyPopper,
+  shabbat: Home,
+  bar: GlassWater,
 };
 
 const eventColors = {
   service: { bg: 'from-[#5BA3D9] to-[#3B82C8]', accent: '#5BA3D9' },
-  kiddush: { bg: 'from-[#3B82C8] to-[#2B6BA8]', accent: '#3B82C8' },
-  party: { bg: 'from-[#2B6BA8] to-[#183F65]', accent: '#2B6BA8' },
+  party: { bg: 'from-[#3B82C8] to-[#2B6BA8]', accent: '#3B82C8' },
+  shabbat: { bg: 'from-[#2B6BA8] to-[#183F65]', accent: '#2B6BA8' },
+  bar: { bg: 'from-[#183F65] to-[#0F2A45]', accent: '#183F65' },
 };
 
 const eventImages = {
-  service: '/synagogue.avif',
-  kiddush: '/synagogue.avif',
-  party: '/bait al hayam.jpg',
+  service: '/syna.jpeg',
+  party: '/party.jpeg',
+  shabbat: '/gallery/hero pic.jpeg',
+  bar: '/bar.jpeg',
 };
 
 const eventMapsUrls = {
-  service: '',
-  kiddush: '',
-  party: '',
+  service: 'https://maps.google.com/?q=Aharon+Chelouche+Street+47+Tel+Aviv',
+  party: 'https://maps.google.com/?q=Yordei+Hasira+1+Tel+Aviv',
+  shabbat: 'https://maps.google.com/?q=Manne+Street+5+Tel+Aviv',
+  bar: 'https://maps.google.com/?q=Zvulun+7+Tel+Aviv',
 };
 
 // Floating stars component - using fixed positions to avoid hydration mismatch
@@ -205,20 +209,6 @@ const EventModal = ({
                 )}
               </div>
 
-              {/* Dress Code - show for ALL events */}
-              <div className="p-4 rounded-2xl bg-[#F0F7FF] border border-[#D4EBF8]">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#D4EBF8] flex items-center justify-center flex-shrink-0">
-                    <Shirt className="w-6 h-6 text-[#2B6BA8]" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-[#5BA3D9] font-medium uppercase tracking-wide">{t('modal.dressCode')}</p>
-                    <p className="text-xl text-[#183F65] font-semibold">{t(`${eventKey}.dressCode`)}</p>
-                    <p className="text-[#1F5486] mt-1">{t(`${eventKey}.dressCodeDetails`)}</p>
-                  </div>
-                </div>
-              </div>
-
               {/* Description */}
               <div className="text-center pt-4 border-t border-[#D4EBF8]">
                 <p className="text-lg text-[#183F65] leading-relaxed italic">
@@ -252,7 +242,7 @@ export default function Events() {
   const [activeEvent, setActiveEvent] = useState<number>(0);
   const [modalEvent, setModalEvent] = useState<string | null>(null);
 
-  const events = ['service', 'kiddush', 'party'] as const;
+  const events = ['service', 'party', 'shabbat', 'bar'] as const;
 
   return (
     <section

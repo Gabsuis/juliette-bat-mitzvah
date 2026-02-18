@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "Juliette's Bat Mitzvah",
     images: [
       {
-        url: '/engagement.jpg',
+        url: '/Meta pic.jpeg',
         width: 1200,
         height: 630,
         alt: "Juliette's Bat Mitzvah - Tel Aviv 2026",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Juliette's Bat Mitzvah - Tel Aviv 2026",
     description: "Join us to celebrate Juliette's Bat Mitzvah in Tel Aviv! A beach & ocean celebration by the Mediterranean Sea.",
-    images: ['/engagement.jpg'],
+    images: ['/Meta pic.jpeg'],
   },
 };
 

@@ -47,11 +47,14 @@ function doPost(e) {
       data.name,
       data.email,
       data.phone,
-      data.guests,
+      data.adults,
+      data.kids,
+      data.kidsAges,
       data.message,
       data.service,
-      data.kiddush,
-      data.party
+      data.party,
+      data.shabbat,
+      data.bar
     ]);
 
     return ContentService

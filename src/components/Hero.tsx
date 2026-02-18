@@ -5,13 +5,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
 
-const floatingPhotos = [
-  { src: '/gallery/WhatsApp Image 2025-12-31 at 19.03.08.jpeg', rotation: -12, position: { top: '10%', left: '3%' }, delay: 0 },
-  { src: '/gallery/WhatsApp Image 2025-12-31 at 19.03.14.jpeg', rotation: 8, position: { top: '15%', right: '2%' }, delay: 0.2 },
-  { src: '/gallery/WhatsApp Image 2025-12-31 at 19.03.20.jpeg', rotation: -6, position: { bottom: '20%', left: '5%' }, delay: 0.4 },
-  { src: '/gallery/WhatsApp Image 2025-12-31 at 19.03.16.jpeg', rotation: 10, position: { bottom: '15%', right: '3%' }, delay: 0.6 },
-];
-
 const floatingStars = [
   { size: 16, position: { top: '15%', left: '10%' }, delay: 0, duration: 4 },
   { size: 12, position: { top: '25%', right: '15%' }, delay: 1, duration: 5 },
@@ -82,43 +75,6 @@ export default function Hero() {
         </motion.div>
       ))}
 
-      {/* Floating polaroid photos - hidden on mobile */}
-      <div className="hidden lg:block">
-        {floatingPhotos.map((photo, index) => (
-          <motion.div
-            key={index}
-            className="absolute z-5"
-            style={photo.position}
-            initial={{ opacity: 0, scale: 0.8, rotate: photo.rotation - 10 }}
-            animate={{
-              opacity: [0.7, 0.9, 0.7],
-              y: [0, -10, 0],
-              rotate: [photo.rotation - 2, photo.rotation + 2, photo.rotation - 2],
-            }}
-            transition={{
-              opacity: { duration: 4, repeat: Infinity, ease: 'easeInOut', delay: photo.delay },
-              y: { duration: 5, repeat: Infinity, ease: 'easeInOut', delay: photo.delay },
-              rotate: { duration: 6, repeat: Infinity, ease: 'easeInOut', delay: photo.delay },
-            }}
-            whileHover={{ scale: 1.1, opacity: 1, zIndex: 20 }}
-          >
-            <div
-              className="bg-white p-2 rounded shadow-xl cursor-pointer"
-              style={{ transform: `rotate(${photo.rotation}deg)` }}
-            >
-              <div className="relative w-36 h-36 xl:w-48 xl:h-48 overflow-hidden rounded-sm">
-                <Image
-                  src={photo.src}
-                  alt="Memory"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Engagement Photo */}
         <motion.div
@@ -143,7 +99,7 @@ export default function Hero() {
             {/* The actual engagement photo */}
             <div className="absolute inset-3 rounded-full overflow-hidden shadow-2xl">
               <Image
-                src="/engagement.jpg"
+                src="/gallery/hero pic.jpeg"
                 alt="Juliette"
                 fill
                 className="object-cover"

@@ -14,7 +14,6 @@ import {
   Star,
   Loader2
 } from 'lucide-react';
-import Image from 'next/image';
 
 type AttendanceStatus = 'attending' | 'notAttending' | null;
 
@@ -22,11 +21,14 @@ interface RSVPData {
   name: string;
   email: string;
   phone: string;
-  guests: string;
+  adults: string;
+  kids: string;
+  kidsAges: string;
   message: string;
   service: AttendanceStatus;
-  kiddush: AttendanceStatus;
   party: AttendanceStatus;
+  shabbat: AttendanceStatus;
+  bar: AttendanceStatus;
 }
 
 export default function RSVPForm() {
@@ -39,20 +41,24 @@ export default function RSVPForm() {
     name: '',
     email: '',
     phone: '',
-    guests: '1',
+    adults: '1',
+    kids: '0',
+    kidsAges: '',
     message: '',
     service: null,
-    kiddush: null,
     party: null,
+    shabbat: null,
+    bar: null,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const events = [
-    { key: 'service', translationKey: 'service', date: 'July 26' },
-    { key: 'kiddush', translationKey: 'kiddush', date: 'July 26' },
-    { key: 'party', translationKey: 'party', date: 'July 26' },
+    { key: 'service', translationKey: 'service', date: 'June 18' },
+    { key: 'party', translationKey: 'party', date: 'June 18' },
+    { key: 'shabbat', translationKey: 'shabbat', date: 'June 19' },
+    { key: 'bar', translationKey: 'bar', date: 'June 20' },
   ] as const;
 
   const handleInputChange = (
@@ -76,11 +82,14 @@ export default function RSVPForm() {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        guests: formData.guests,
+        adults: formData.adults,
+        kids: formData.kids,
+        kidsAges: formData.kidsAges,
         message: formData.message,
         service: formData.service === 'attending' ? 'Yes' : formData.service === 'notAttending' ? 'No' : 'Not answered',
-        kiddush: formData.kiddush === 'attending' ? 'Yes' : formData.kiddush === 'notAttending' ? 'No' : 'Not answered',
         party: formData.party === 'attending' ? 'Yes' : formData.party === 'notAttending' ? 'No' : 'Not answered',
+        shabbat: formData.shabbat === 'attending' ? 'Yes' : formData.shabbat === 'notAttending' ? 'No' : 'Not answered',
+        bar: formData.bar === 'attending' ? 'Yes' : formData.bar === 'notAttending' ? 'No' : 'Not answered',
       };
 
       const response = await fetch('/api/rsvp', {
@@ -95,11 +104,14 @@ export default function RSVPForm() {
           name: '',
           email: '',
           phone: '',
-          guests: '1',
+          adults: '1',
+          kids: '0',
+          kidsAges: '',
           message: '',
           service: null,
-          kiddush: null,
           party: null,
+          shabbat: null,
+          bar: null,
         });
       } else {
         setSubmitStatus('error');
@@ -118,19 +130,8 @@ export default function RSVPForm() {
       ref={ref}
       className="relative py-24 md:py-32 overflow-hidden"
     >
-      {/* Background image with dreamy overlay */}
-      <div className="absolute inset-0">
-        <Image
-          src="/gallery/WhatsApp Image 2025-12-31 at 19.03.17.jpeg"
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
-        />
-        {/* Dreamy gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F0F7FF]/95 via-[#D4EBF8]/90 to-[#F0F7FF]/95" />
-        <div className="absolute inset-0 backdrop-blur-[2px]" />
-      </div>
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#F0F7FF] via-[#D4EBF8] to-[#F0F7FF]" />
 
       {/* Decorative elements */}
       <motion.div
@@ -216,22 +217,57 @@ export default function RSVPForm() {
               />
             </label>
 
-            {/* Number of guests */}
+            {/* Number of adults */}
             <label className="input input-bordered flex items-center gap-2 bg-white/50 border-[#B8D8F0] focus-within:border-[#5BA3D9]">
               <Users size={18} className="text-[#5BA3D9]" />
               <select
-                name="guests"
-                value={formData.guests}
+                name="adults"
+                value={formData.adults}
                 onChange={handleInputChange}
                 className="grow bg-transparent text-[#183F65] cursor-pointer"
               >
                 {[1, 2, 3, 4, 5, 6].map((num) => (
                   <option key={num} value={num}>
-                    {num} {num === 1 ? 'guest' : 'guests'}
+                    {num} {t(num === 1 ? 'form.adult' : 'form.adults')}
                   </option>
                 ))}
               </select>
             </label>
+
+            {/* Number of children/teenagers */}
+            <label className="input input-bordered flex items-center gap-2 bg-white/50 border-[#B8D8F0] focus-within:border-[#5BA3D9]">
+              <Users size={18} className="text-[#5BA3D9]" />
+              <select
+                name="kids"
+                value={formData.kids}
+                onChange={handleInputChange}
+                className="grow bg-transparent text-[#183F65] cursor-pointer"
+              >
+                {[0, 1, 2, 3, 4, 5, 6].map((num) => (
+                  <option key={num} value={num}>
+                    {num} {t(num === 1 ? 'form.kid' : 'form.kids')}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            {/* Kids ages - shown only when kids > 0 */}
+            {parseInt(formData.kids) > 0 && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+              >
+                <input
+                  type="text"
+                  name="kidsAges"
+                  value={formData.kidsAges}
+                  onChange={handleInputChange}
+                  placeholder={t('form.kidsAgesPlaceholder')}
+                  className="input input-bordered w-full bg-white/50 border-[#B8D8F0] focus:border-[#5BA3D9] text-[#183F65] placeholder:text-[#3B82C8]"
+                />
+              </motion.div>
+            )}
           </div>
 
           {/* Event attendance */}

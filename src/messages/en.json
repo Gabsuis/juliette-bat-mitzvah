@@ -5,37 +5,13 @@
   },
   "nav": {
     "home": "Home",
-    "story": "Juliette's Journey",
     "events": "Events",
     "rsvp": "RSVP"
   },
   "hero": {
     "subtitle": "I'm becoming a Bat Mitzvah!",
-    "date": "2026",
+    "date": "June 18, 2026",
     "cta": "RSVP Now"
-  },
-  "story": {
-    "title": "Juliette's Journey",
-    "content": "Growing up by the Mediterranean Sea in Tel Aviv, Juliette has always been inspired by the ocean. From building sandcastles on the beach to learning to surf the waves, the sea has been her constant companion. Now, at 13, she's ready to ride the biggest wave yet -- her Bat Mitzvah!",
-    "tagline": "From the Beach to the Bimah",
-    "timeline": {
-      "massa": {
-        "title": "Growing Up in Tel Aviv",
-        "description": "A childhood filled with sunshine, sandy toes and salty hair. Juliette grew up running along the Tel Aviv shoreline, falling in love with the ocean and the vibrant city around her."
-      },
-      "aliya": {
-        "title": "Learning Torah",
-        "description": "Juliette discovered the beauty of Torah and Jewish tradition. Week after week, she dove into her studies with the same passion she brings to everything -- curious, determined, and full of joy."
-      },
-      "engagement": {
-        "title": "Preparing for the Big Day",
-        "description": "Months of preparation, practicing her Torah portion, writing her Dvar Torah, and choosing the perfect ocean-themed details for her celebration. Juliette is ready!"
-      },
-      "wedding": {
-        "title": "The Celebration",
-        "description": "The moment has arrived! Join us as Juliette is called to the Torah and celebrates this incredible milestone with family and friends by the sea."
-      }
-    }
   },
   "events": {
     "title": "The Celebrations",
@@ -48,34 +24,44 @@
       "openMaps": "Open in Google Maps"
     },
     "service": {
-      "title": "Shabbat Service",
-      "date": "TBD",
-      "time": "TBD",
-      "lieu": "TBD",
-      "address": "Tel Aviv, Israel",
-      "description": "Join us for Shabbat morning service as Juliette reads from the Torah for the first time. A meaningful and joyful moment!",
-      "dressCode": "Shabbat Elegant",
-      "dressCodeDetails": "Respectful Shabbat attire. Ladies: Modest dress. Gentlemen: Suit or dress shirt."
-    },
-    "kiddush": {
-      "title": "Kiddush Luncheon",
-      "date": "TBD",
-      "time": "TBD",
-      "lieu": "TBD",
-      "address": "Tel Aviv, Israel",
-      "description": "Following the service, join us for a festive Kiddush luncheon to celebrate Juliette's achievement with food, drinks and good company.",
-      "dressCode": "Smart Casual",
-      "dressCodeDetails": "Keep it comfortable and classy. Think Shabbat brunch by the sea."
+      "title": "Bat Mitzvah Service & Kiddush",
+      "date": "Thursday, June 18",
+      "time": "9:30 AM - 12:00 PM",
+      "lieu": "Synagogue",
+      "address": "Aharon Chelouche Street 42, Tel Aviv",
+      "description": "Join us for the morning service as Juliette reads from the Torah for the first time, followed by a festive Kiddush luncheon.",
+      "dressCode": "Elegant",
+      "dressCodeDetails": "Respectful attire. Ladies: Modest dress. Gentlemen: Suit or dress shirt."
     },
     "party": {
-      "title": "Beach Party",
-      "date": "TBD",
-      "time": "TBD",
-      "lieu": "TBD",
-      "address": "Tel Aviv, Israel",
-      "description": "The main event! An ocean-themed evening celebration on the beach with music, dancing, and waves of fun under the stars.",
-      "dressCode": "Beach Chic",
-      "dressCodeDetails": "Elegant but beach-friendly. Think flowing dresses, linen suits, and sandals welcome!"
+      "title": "Celebration Dinner & Party",
+      "date": "Thursday, June 18",
+      "time": "Starting 6:30 PM",
+      "lieu": "Yordei Hasira",
+      "address": "Yordei Hasira 1, Tel Aviv",
+      "description": "The main event! An evening of dinner, dancing, and celebration under the Tel Aviv sky.",
+      "dressCode": "Chic",
+      "dressCodeDetails": "Dress to impress! Elegant evening attire."
+    },
+    "shabbat": {
+      "title": "Shabbat Dinner",
+      "date": "Friday, June 19",
+      "time": "7:00 PM",
+      "lieu": "At Home",
+      "address": "Manne Street 5, Apt 7, Tel Aviv",
+      "description": "An intimate Shabbat dinner with family and close friends to continue the celebrations.",
+      "dressCode": "Smart Casual",
+      "dressCodeDetails": "Comfortable and classy. Think Shabbat dinner with family."
+    },
+    "bar": {
+      "title": "Saturday Night Out",
+      "date": "Saturday, June 20",
+      "time": "8:00 PM",
+      "lieu": "Juniper Bar",
+      "address": "Zvulun 7, Tel Aviv",
+      "description": "Wind down the weekend with drinks and good vibes at Juniper Bar. Adults only!",
+      "dressCode": "Casual",
+      "dressCodeDetails": "Come as you are. It's a bar night!"
     }
   },
   "rsvp": {
@@ -90,6 +76,11 @@
       "dietaryPlaceholder": "Kosher, vegetarian, allergies...",
       "message": "Message for Juliette",
       "messagePlaceholder": "A little note for Juliette...",
+      "adult": "Adult",
+      "adults": "Adults",
+      "kid": "Child/Teenager",
+      "kids": "Children/Teenagers",
+      "kidsAgesPlaceholder": "Ages of children/teenagers (e.g. 5, 8, 12)",
       "attending": "Attending",
       "notAttending": "Unable to Attend",
       "submit": "Send RSVP",
@@ -102,15 +93,11 @@
   },
   "countdown": {
     "title": "Countdown to the Bat Mitzvah",
-    "subtitle": "Date coming soon!",
+    "subtitle": "June 18, 2026",
     "days": "Days",
     "hours": "Hours",
     "minutes": "Minutes",
     "seconds": "Seconds"
-  },
-  "gallery": {
-    "title": "Juliette's Moments",
-    "subtitle": "A glimpse into her journey"
   },
   "footer": {
     "madeWith": "Made with love",

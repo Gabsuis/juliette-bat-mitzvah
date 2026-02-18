@@ -5,37 +5,13 @@
   },
   "nav": {
     "home": "Accueil",
-    "story": "Le Parcours de Juliette",
     "events": "Evenements",
     "rsvp": "RSVP"
   },
   "hero": {
     "subtitle": "Je deviens Bat Mitzvah !",
-    "date": "2026",
+    "date": "18 Juin 2026",
     "cta": "Confirmer ma presence"
-  },
-  "story": {
-    "title": "Le Parcours de Juliette",
-    "content": "En grandissant au bord de la Mediterranee a Tel Aviv, Juliette a toujours ete inspiree par l'ocean. Des chateaux de sable sur la plage a l'apprentissage du surf, la mer a toujours ete sa fidele compagne. Aujourd'hui, a 13 ans, elle est prete a surfer la plus grande vague de sa vie -- sa Bat Mitzvah !",
-    "tagline": "De la plage a la Bimah",
-    "timeline": {
-      "massa": {
-        "title": "Grandir a Tel Aviv",
-        "description": "Une enfance baignee de soleil, les pieds dans le sable et les cheveux sales par la mer. Juliette a grandi en courant le long du rivage de Tel Aviv, tombant amoureuse de l'ocean et de la ville vibrante qui l'entoure."
-      },
-      "aliya": {
-        "title": "Apprendre la Torah",
-        "description": "Juliette a decouvert la beaute de la Torah et de la tradition juive. Semaine apres semaine, elle s'est plongee dans ses etudes avec la meme passion qu'elle met dans tout -- curieuse, determinee et pleine de joie."
-      },
-      "engagement": {
-        "title": "La Preparation du Grand Jour",
-        "description": "Des mois de preparation, a repeter sa paracha, ecrire son Dvar Torah et choisir les details parfaits sur le theme de l'ocean pour sa celebration. Juliette est prete !"
-      },
-      "wedding": {
-        "title": "La Celebration",
-        "description": "Le moment est arrive ! Rejoignez-nous alors que Juliette est appelee a la Torah et celebre cette etape incroyable avec sa famille et ses amis au bord de la mer."
-      }
-    }
   },
   "events": {
     "title": "Les Celebrations",
@@ -48,34 +24,44 @@
       "openMaps": "Ouvrir dans Google Maps"
     },
     "service": {
-      "title": "Office de Shabbat",
-      "date": "A definir",
-      "time": "A definir",
-      "lieu": "A definir",
-      "address": "Tel Aviv, Israel",
-      "description": "Rejoignez-nous pour l'office du Shabbat matin alors que Juliette lit la Torah pour la premiere fois. Un moment plein de sens et de joie !",
-      "dressCode": "Elegance de Shabbat",
-      "dressCodeDetails": "Tenue de Shabbat respectueuse. Femmes : Robe modeste. Hommes : Costume ou chemise habillee."
-    },
-    "kiddush": {
-      "title": "Kiddoush",
-      "date": "A definir",
-      "time": "A definir",
-      "lieu": "A definir",
-      "address": "Tel Aviv, Israel",
-      "description": "Apres l'office, rejoignez-nous pour un kiddoush festif afin de celebrer la reussite de Juliette autour d'un bon repas et en bonne compagnie.",
-      "dressCode": "Chic Decontracte",
-      "dressCodeDetails": "Confortable et elegant. Pensez brunch de Shabbat au bord de la mer."
+      "title": "Office & Kiddoush",
+      "date": "Jeudi 18 Juin",
+      "time": "9h30 - 12h00",
+      "lieu": "Synagogue",
+      "address": "Rue Aharon Chelouche 42, Tel Aviv",
+      "description": "Rejoignez-nous pour l'office du matin alors que Juliette lit la Torah pour la premiere fois, suivi d'un Kiddoush festif.",
+      "dressCode": "Elegant",
+      "dressCodeDetails": "Tenue respectueuse. Femmes : Robe modeste. Hommes : Costume ou chemise habillee."
     },
     "party": {
-      "title": "Soiree Plage",
-      "date": "A definir",
-      "time": "A definir",
-      "lieu": "A definir",
-      "address": "Tel Aviv, Israel",
-      "description": "L'evenement principal ! Une soiree sur le theme de l'ocean, sur la plage, avec musique, danse et des vagues de bonheur sous les etoiles.",
-      "dressCode": "Beach Chic",
-      "dressCodeDetails": "Elegant mais adapte a la plage. Pensez robes fluides, costumes en lin, et sandales bienvenues !"
+      "title": "Diner & Soiree de Celebration",
+      "date": "Jeudi 18 Juin",
+      "time": "A partir de 18h30",
+      "lieu": "Yordei Hasira",
+      "address": "Yordei Hasira 1, Tel Aviv",
+      "description": "L'evenement principal ! Une soiree de diner, danse et celebration sous le ciel de Tel Aviv.",
+      "dressCode": "Chic",
+      "dressCodeDetails": "Soyez sur votre 31 ! Tenue de soiree elegante."
+    },
+    "shabbat": {
+      "title": "Diner de Shabbat",
+      "date": "Vendredi 19 Juin",
+      "time": "19h00",
+      "lieu": "A la Maison",
+      "address": "Rue Manne 5, Apt 7, Tel Aviv",
+      "description": "Un diner de Shabbat intime en famille et entre amis proches pour continuer les celebrations.",
+      "dressCode": "Chic Decontracte",
+      "dressCodeDetails": "Confortable et elegant. Pensez diner de Shabbat en famille."
+    },
+    "bar": {
+      "title": "Sortie du Samedi Soir",
+      "date": "Samedi 20 Juin",
+      "time": "20h00",
+      "lieu": "Juniper Bar",
+      "address": "Zvulun 7, Tel Aviv",
+      "description": "Finissez le week-end en beaute avec des cocktails et une bonne ambiance au Juniper Bar. Adultes uniquement !",
+      "dressCode": "Decontracte",
+      "dressCodeDetails": "Venez comme vous etes. C'est une soiree bar !"
     }
   },
   "rsvp": {
@@ -90,6 +76,11 @@
       "dietaryPlaceholder": "Casher, vegetarien, allergies...",
       "message": "Message pour Juliette",
       "messagePlaceholder": "Un petit mot pour Juliette...",
+      "adult": "Adulte",
+      "adults": "Adultes",
+      "kid": "Enfant/Adolescent",
+      "kids": "Enfants/Adolescents",
+      "kidsAgesPlaceholder": "Ages des enfants/adolescents (ex: 5, 8, 12)",
       "attending": "Present(e)",
       "notAttending": "Absent(e)",
       "submit": "Envoyer RSVP",
@@ -102,15 +93,11 @@
   },
   "countdown": {
     "title": "Compte a rebours jusqu'a la Bat Mitzvah",
-    "subtitle": "Date a venir !",
+    "subtitle": "18 Juin 2026",
     "days": "Jours",
     "hours": "Heures",
     "minutes": "Minutes",
     "seconds": "Secondes"
-  },
-  "gallery": {
-    "title": "Les Moments de Juliette",
-    "subtitle": "Un apercu de son parcours"
   },
   "footer": {
     "madeWith": "Fait avec amour",

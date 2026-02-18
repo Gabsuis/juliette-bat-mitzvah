@@ -56,7 +56,6 @@ export default function Navigation() {
 
   const navItems = [
     { label: t('home'), type: 'scroll' as const, target: 'hero' },
-    { label: t('story'), type: 'link' as const, target: '/our-story' },
     { label: t('events'), type: 'scroll' as const, target: 'events' },
     { label: t('rsvp'), type: 'scroll' as const, target: 'rsvp' },
   ];
@@ -83,7 +82,7 @@ export default function Navigation() {
             >
               <Image
                 src="/logo.png"
-                alt="E & G"
+                alt="Juliette"
                 width={52}
                 height={52}
                 className="rounded-full"
