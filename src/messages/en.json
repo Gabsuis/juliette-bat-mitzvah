@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "title": "Juliette's Bat Mitzvah",
+    "description": "Juliette's Bat Mitzvah celebration in Tel Aviv, 2026."
+  },
+  "nav": {
+    "home": "Home",
+    "story": "Juliette's Journey",
+    "events": "Events",
+    "rsvp": "RSVP"
+  },
+  "hero": {
+    "subtitle": "I'm becoming a Bat Mitzvah!",
+    "date": "2026",
+    "cta": "RSVP Now"
+  },
+  "story": {
+    "title": "Juliette's Journey",
+    "content": "Growing up by the Mediterranean Sea in Tel Aviv, Juliette has always been inspired by the ocean. From building sandcastles on the beach to learning to surf the waves, the sea has been her constant companion. Now, at 13, she's ready to ride the biggest wave yet -- her Bat Mitzvah!",
+    "tagline": "From the Beach to the Bimah",
+    "timeline": {
+      "massa": {
+        "title": "Growing Up in Tel Aviv",
+        "description": "A childhood filled with sunshine, sandy toes and salty hair. Juliette grew up running along the Tel Aviv shoreline, falling in love with the ocean and the vibrant city around her."
+      },
+      "aliya": {
+        "title": "Learning Torah",
+        "description": "Juliette discovered the beauty of Torah and Jewish tradition. Week after week, she dove into her studies with the same passion she brings to everything -- curious, determined, and full of joy."
+      },
+      "engagement": {
+        "title": "Preparing for the Big Day",
+        "description": "Months of preparation, practicing her Torah portion, writing her Dvar Torah, and choosing the perfect ocean-themed details for her celebration. Juliette is ready!"
+      },
+      "wedding": {
+        "title": "The Celebration",
+        "description": "The moment has arrived! Join us as Juliette is called to the Torah and celebrates this incredible milestone with family and friends by the sea."
+      }
+    }
+  },
+  "events": {
+    "title": "The Celebrations",
+    "subtitle": "Special moments to share with Juliette",
+    "viewDetails": "View Details",
+    "modal": {
+      "time": "Time",
+      "location": "Location",
+      "dressCode": "Dress Code",
+      "openMaps": "Open in Google Maps"
+    },
+    "service": {
+      "title": "Shabbat Service",
+      "date": "TBD",
+      "time": "TBD",
+      "lieu": "TBD",
+      "address": "Tel Aviv, Israel",
+      "description": "Join us for Shabbat morning service as Juliette reads from the Torah for the first time. A meaningful and joyful moment!",
+      "dressCode": "Shabbat Elegant",
+      "dressCodeDetails": "Respectful Shabbat attire. Ladies: Modest dress. Gentlemen: Suit or dress shirt."
+    },
+    "kiddush": {
+      "title": "Kiddush Luncheon",
+      "date": "TBD",
+      "time": "TBD",
+      "lieu": "TBD",
+      "address": "Tel Aviv, Israel",
+      "description": "Following the service, join us for a festive Kiddush luncheon to celebrate Juliette's achievement with food, drinks and good company.",
+      "dressCode": "Smart Casual",
+      "dressCodeDetails": "Keep it comfortable and classy. Think Shabbat brunch by the sea."
+    },
+    "party": {
+      "title": "Beach Party",
+      "date": "TBD",
+      "time": "TBD",
+      "lieu": "TBD",
+      "address": "Tel Aviv, Israel",
+      "description": "The main event! An ocean-themed evening celebration on the beach with music, dancing, and waves of fun under the stars.",
+      "dressCode": "Beach Chic",
+      "dressCodeDetails": "Elegant but beach-friendly. Think flowing dresses, linen suits, and sandals welcome!"
+    }
+  },
+  "rsvp": {
+    "title": "RSVP",
+    "subtitle": "We can't wait to celebrate with you",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "guests": "Number of Guests",
+      "dietary": "Dietary Restrictions",
+      "dietaryPlaceholder": "Kosher, vegetarian, allergies...",
+      "message": "Message for Juliette",
+      "messagePlaceholder": "A little note for Juliette...",
+      "attending": "Attending",
+      "notAttending": "Unable to Attend",
+      "submit": "Send RSVP",
+      "success": "Thank you! Your RSVP has been received.",
+      "error": "Something went wrong. Please try again."
+    },
+    "events": {
+      "selectAll": "Select your attendance for each event"
+    }
+  },
+  "countdown": {
+    "title": "Countdown to the Bat Mitzvah",
+    "subtitle": "Date coming soon!",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
+  },
+  "gallery": {
+    "title": "Juliette's Moments",
+    "subtitle": "A glimpse into her journey"
+  },
+  "footer": {
+    "madeWith": "Made with love",
+    "hashtag": "#JulietteBatMitzvah"
+  }
+}

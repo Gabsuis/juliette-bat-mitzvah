@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "title": "Bat Mitzvah de Juliette",
+    "description": "La Bat Mitzvah de Juliette a Tel Aviv, 2026."
+  },
+  "nav": {
+    "home": "Accueil",
+    "story": "Le Parcours de Juliette",
+    "events": "Evenements",
+    "rsvp": "RSVP"
+  },
+  "hero": {
+    "subtitle": "Je deviens Bat Mitzvah !",
+    "date": "2026",
+    "cta": "Confirmer ma presence"
+  },
+  "story": {
+    "title": "Le Parcours de Juliette",
+    "content": "En grandissant au bord de la Mediterranee a Tel Aviv, Juliette a toujours ete inspiree par l'ocean. Des chateaux de sable sur la plage a l'apprentissage du surf, la mer a toujours ete sa fidele compagne. Aujourd'hui, a 13 ans, elle est prete a surfer la plus grande vague de sa vie -- sa Bat Mitzvah !",
+    "tagline": "De la plage a la Bimah",
+    "timeline": {
+      "massa": {
+        "title": "Grandir a Tel Aviv",
+        "description": "Une enfance baignee de soleil, les pieds dans le sable et les cheveux sales par la mer. Juliette a grandi en courant le long du rivage de Tel Aviv, tombant amoureuse de l'ocean et de la ville vibrante qui l'entoure."
+      },
+      "aliya": {
+        "title": "Apprendre la Torah",
+        "description": "Juliette a decouvert la beaute de la Torah et de la tradition juive. Semaine apres semaine, elle s'est plongee dans ses etudes avec la meme passion qu'elle met dans tout -- curieuse, determinee et pleine de joie."
+      },
+      "engagement": {
+        "title": "La Preparation du Grand Jour",
+        "description": "Des mois de preparation, a repeter sa paracha, ecrire son Dvar Torah et choisir les details parfaits sur le theme de l'ocean pour sa celebration. Juliette est prete !"
+      },
+      "wedding": {
+        "title": "La Celebration",
+        "description": "Le moment est arrive ! Rejoignez-nous alors que Juliette est appelee a la Torah et celebre cette etape incroyable avec sa famille et ses amis au bord de la mer."
+      }
+    }
+  },
+  "events": {
+    "title": "Les Celebrations",
+    "subtitle": "Des moments speciaux a partager avec Juliette",
+    "viewDetails": "Voir les details",
+    "modal": {
+      "time": "Heure",
+      "location": "Lieu",
+      "dressCode": "Dress Code",
+      "openMaps": "Ouvrir dans Google Maps"
+    },
+    "service": {
+      "title": "Office de Shabbat",
+      "date": "A definir",
+      "time": "A definir",
+      "lieu": "A definir",
+      "address": "Tel Aviv, Israel",
+      "description": "Rejoignez-nous pour l'office du Shabbat matin alors que Juliette lit la Torah pour la premiere fois. Un moment plein de sens et de joie !",
+      "dressCode": "Elegance de Shabbat",
+      "dressCodeDetails": "Tenue de Shabbat respectueuse. Femmes : Robe modeste. Hommes : Costume ou chemise habillee."
+    },
+    "kiddush": {
+      "title": "Kiddoush",
+      "date": "A definir",
+      "time": "A definir",
+      "lieu": "A definir",
+      "address": "Tel Aviv, Israel",
+      "description": "Apres l'office, rejoignez-nous pour un kiddoush festif afin de celebrer la reussite de Juliette autour d'un bon repas et en bonne compagnie.",
+      "dressCode": "Chic Decontracte",
+      "dressCodeDetails": "Confortable et elegant. Pensez brunch de Shabbat au bord de la mer."
+    },
+    "party": {
+      "title": "Soiree Plage",
+      "date": "A definir",
+      "time": "A definir",
+      "lieu": "A definir",
+      "address": "Tel Aviv, Israel",
+      "description": "L'evenement principal ! Une soiree sur le theme de l'ocean, sur la plage, avec musique, danse et des vagues de bonheur sous les etoiles.",
+      "dressCode": "Beach Chic",
+      "dressCodeDetails": "Elegant mais adapte a la plage. Pensez robes fluides, costumes en lin, et sandales bienvenues !"
+    }
+  },
+  "rsvp": {
+    "title": "RSVP",
+    "subtitle": "Nous avons hate de celebrer avec vous",
+    "form": {
+      "name": "Nom complet",
+      "email": "Adresse email",
+      "phone": "Numero de telephone",
+      "guests": "Nombre d'invites",
+      "dietary": "Restrictions alimentaires",
+      "dietaryPlaceholder": "Casher, vegetarien, allergies...",
+      "message": "Message pour Juliette",
+      "messagePlaceholder": "Un petit mot pour Juliette...",
+      "attending": "Present(e)",
+      "notAttending": "Absent(e)",
+      "submit": "Envoyer RSVP",
+      "success": "Merci ! Votre RSVP a bien ete recu.",
+      "error": "Une erreur s'est produite. Veuillez reessayer."
+    },
+    "events": {
+      "selectAll": "Indiquez votre presence pour chaque evenement"
+    }
+  },
+  "countdown": {
+    "title": "Compte a rebours jusqu'a la Bat Mitzvah",
+    "subtitle": "Date a venir !",
+    "days": "Jours",
+    "hours": "Heures",
+    "minutes": "Minutes",
+    "seconds": "Secondes"
+  },
+  "gallery": {
+    "title": "Les Moments de Juliette",
+    "subtitle": "Un apercu de son parcours"
+  },
+  "footer": {
+    "madeWith": "Fait avec amour",
+    "hashtag": "#JulietteBatMitzvah"
+  }
+}
