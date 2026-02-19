@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   title: "Juliette's Bat Mitzvah - Tel Aviv 2026",
   description: "Join us to celebrate Juliette's Bat Mitzvah in Tel Aviv! A beach & ocean celebration by the Mediterranean Sea.",
   icons: {
-    icon: '/logo.png',
-    apple: '/logo.png',
+    icon: '/gallery/WhatsApp Image 2026-02-18 at 16.23.38.jpeg',
+    apple: '/gallery/WhatsApp Image 2026-02-18 at 16.23.38.jpeg',
   },
   metadataBase: new URL(siteUrl),
   openGraph: {
