@@ -1,6 +1,5 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
@@ -15,8 +14,6 @@ const floatingStars = [
 ];
 
 export default function Hero() {
-  const t = useTranslations('hero');
-
   const scrollToRSVP = () => {
     const element = document.getElementById('rsvp');
     if (element) {
@@ -127,7 +124,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-2xl md:text-3xl text-[#1F5486] font-light mb-2"
         >
-          {t('subtitle')}
+          I'm becoming a Bat Mitzvah!
         </motion.p>
 
         {/* Date */}
@@ -139,7 +136,7 @@ export default function Hero() {
         >
           <span className="w-16 h-px bg-[#5BA3D9]" />
           <p className="text-xl md:text-2xl text-[#183F65] tracking-widest">
-            {t('date')}
+            June 18, 2026
           </p>
           <span className="w-16 h-px bg-[#5BA3D9]" />
         </motion.div>
@@ -154,7 +151,7 @@ export default function Hero() {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          {t('cta')}
+          RSVP Now
         </motion.button>
       </div>
     </section>

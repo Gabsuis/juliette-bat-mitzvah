@@ -1,8 +1,8 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import {
   Send,
   Check,
@@ -31,9 +31,25 @@ interface RSVPData {
   bar: AttendanceStatus;
 }
 
+const allEvents = [
+  { key: 'service', title: 'Bat Mitzvah Service & Kiddush', date: 'June 18' },
+  { key: 'party', title: 'Celebration Dinner & Party', date: 'June 18' },
+  { key: 'shabbat', title: 'Shabbat Dinner', date: 'June 19' },
+  { key: 'bar', title: 'Saturday Night Out', date: 'June 20' },
+] as const;
+
+const eventKeysByRef: Record<string, string[]> = {
+  default: ['service', 'party', 'shabbat', 'bar'],
+  b: ['service', 'party', 'bar'],
+  c: ['service', 'party'],
+};
+
 export default function RSVPForm() {
-  const t = useTranslations('rsvp');
-  const tEvents = useTranslations('events');
+  const searchParams = useSearchParams();
+  const refParam = searchParams.get('ref') || 'default';
+  const visibleKeys = eventKeysByRef[refParam] || eventKeysByRef.default;
+  const events = allEvents.filter(e => visibleKeys.includes(e.key));
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
@@ -54,13 +70,6 @@ export default function RSVPForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const events = [
-    { key: 'service', translationKey: 'service', date: 'June 18' },
-    { key: 'party', translationKey: 'party', date: 'June 18' },
-    { key: 'shabbat', translationKey: 'shabbat', date: 'June 19' },
-    { key: 'bar', translationKey: 'bar', date: 'June 20' },
-  ] as const;
-
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -79,6 +88,7 @@ export default function RSVPForm() {
     try {
       const sheetData = {
         timestamp: new Date().toISOString(),
+        ref: refParam,
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
@@ -158,9 +168,9 @@ export default function RSVPForm() {
           className="text-center mb-12"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl text-[#183F65] mb-4">
-            {t('title')}
+            RSVP
           </h2>
-          <p className="text-[#1F5486] text-lg">{t('subtitle')}</p>
+          <p className="text-[#1F5486] text-lg">We can't wait to celebrate with you</p>
           <div className="romantic-divider">
             <Star size={16} className="text-[#5BA3D9] fill-[#B8D8F0]" />
           </div>
@@ -184,7 +194,7 @@ export default function RSVPForm() {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                placeholder={t('form.name')}
+                placeholder="Full Name"
                 required
                 className="grow bg-transparent text-[#183F65] placeholder:text-[#3B82C8]"
               />
@@ -198,7 +208,7 @@ export default function RSVPForm() {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                placeholder={t('form.email')}
+                placeholder="Email Address"
                 required
                 className="grow bg-transparent text-[#183F65] placeholder:text-[#3B82C8]"
               />
@@ -212,7 +222,7 @@ export default function RSVPForm() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                placeholder={t('form.phone')}
+                placeholder="Phone Number"
                 className="grow bg-transparent text-[#183F65] placeholder:text-[#3B82C8]"
               />
             </label>
@@ -228,7 +238,7 @@ export default function RSVPForm() {
               >
                 {[1, 2, 3, 4, 5, 6].map((num) => (
                   <option key={num} value={num}>
-                    {num} {t(num === 1 ? 'form.adult' : 'form.adults')}
+                    {num} {num === 1 ? 'Adult' : 'Adults'}
                   </option>
                 ))}
               </select>
@@ -245,7 +255,7 @@ export default function RSVPForm() {
               >
                 {[0, 1, 2, 3, 4, 5, 6].map((num) => (
                   <option key={num} value={num}>
-                    {num} {t(num === 1 ? 'form.kid' : 'form.kids')}
+                    {num} {num === 1 ? 'Child/Teenager' : 'Children/Teenagers'}
                   </option>
                 ))}
               </select>
@@ -263,7 +273,7 @@ export default function RSVPForm() {
                   name="kidsAges"
                   value={formData.kidsAges}
                   onChange={handleInputChange}
-                  placeholder={t('form.kidsAgesPlaceholder')}
+                  placeholder="Ages of children/teenagers (e.g. 5, 8, 12)"
                   className="input input-bordered w-full bg-white/50 border-[#B8D8F0] focus:border-[#5BA3D9] text-[#183F65] placeholder:text-[#3B82C8]"
                 />
               </motion.div>
@@ -272,7 +282,7 @@ export default function RSVPForm() {
 
           {/* Event attendance */}
           <div className="mb-8">
-            <p className="text-[#183F65] font-medium mb-4">{t('events.selectAll')}</p>
+            <p className="text-[#183F65] font-medium mb-4">Select your attendance for each event</p>
             <div className="space-y-4">
               {events.map((event) => (
                 <div
@@ -281,7 +291,7 @@ export default function RSVPForm() {
                 >
                   <div>
                     <p className="font-medium text-[#183F65]">
-                      {tEvents(`${event.translationKey}.title`)}
+                      {event.title}
                     </p>
                     <p className="text-sm text-[#3B82C8]">{event.date}</p>
                   </div>
@@ -295,7 +305,7 @@ export default function RSVPForm() {
                           : 'btn-outline border-green-400 text-green-600 hover:bg-green-50'
                       }`}
                     >
-                      {t('form.attending')}
+                      Attending
                     </button>
                     <button
                       type="button"
@@ -306,7 +316,7 @@ export default function RSVPForm() {
                           : 'btn-outline border-rose-400 text-rose-600 hover:bg-rose-50'
                       }`}
                     >
-                      {t('form.notAttending')}
+                      Unable to Attend
                     </button>
                   </div>
                 </div>
@@ -314,14 +324,13 @@ export default function RSVPForm() {
             </div>
           </div>
 
-
           {/* Message */}
           <div className="mb-8">
             <textarea
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              placeholder={t('form.messagePlaceholder')}
+              placeholder="A little note for Juliette..."
               rows={4}
               className="textarea textarea-bordered w-full bg-white/50 border-[#B8D8F0] focus:border-[#5BA3D9] text-[#183F65] placeholder:text-[#3B82C8] resize-none"
             />
@@ -344,7 +353,7 @@ export default function RSVPForm() {
             ) : (
               <>
                 <Send size={20} />
-                {t('form.submit')}
+                Send RSVP
               </>
             )}
           </motion.button>
@@ -363,12 +372,12 @@ export default function RSVPForm() {
                 {submitStatus === 'success' ? (
                   <>
                     <Check size={20} />
-                    {t('form.success')}
+                    Thank you! Your RSVP has been received.
                   </>
                 ) : (
                   <>
                     <AlertCircle size={20} />
-                    {t('form.error')}
+                    Something went wrong. Please try again.
                   </>
                 )}
               </motion.div>

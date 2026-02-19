@@ -1,28 +1,14 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 
-const languages = [
-  { code: 'en', label: 'EN', flag: '🇬🇧' },
-  { code: 'fr', label: 'FR', flag: '🇫🇷' },
-  { code: 'he', label: 'עב', flag: '🇮🇱' },
-];
-
 export default function Navigation() {
-  const t = useTranslations('nav');
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,32 +18,18 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const switchLanguage = (newLocale: string) => {
-    const currentPath = pathname.replace(`/${locale}`, '') || '/';
-    router.push(`/${newLocale}${currentPath}`);
-  };
-
-  const handleNavClick = (item: { type: 'scroll' | 'link'; target: string }) => {
+  const handleNavClick = (target: string) => {
     setIsMobileMenuOpen(false);
-
-    if (item.type === 'link') {
-      router.push(`/${locale}${item.target}`);
-    } else if (item.type === 'scroll') {
-      if (isHomePage) {
-        const element = document.getElementById(item.target);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        router.push(`/${locale}/#${item.target}`);
-      }
+    const element = document.getElementById(target);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   const navItems = [
-    { label: t('home'), type: 'scroll' as const, target: 'hero' },
-    { label: t('events'), type: 'scroll' as const, target: 'events' },
-    { label: t('rsvp'), type: 'scroll' as const, target: 'rsvp' },
+    { label: 'Home', target: 'hero' },
+    { label: 'Events', target: 'events' },
+    { label: 'RSVP', target: 'rsvp' },
   ];
 
   return (
@@ -74,7 +46,7 @@ export default function Navigation() {
       <nav className="max-w-6xl mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href={`/${locale}`} className="z-10">
+          <Link href="/" className="z-10">
             <motion.div
               className="flex items-center gap-2 cursor-pointer"
               whileHover={{ scale: 1.05 }}
@@ -95,7 +67,7 @@ export default function Navigation() {
             {navItems.map((item) => (
               <motion.button
                 key={item.target}
-                onClick={() => handleNavClick(item)}
+                onClick={() => handleNavClick(item.target)}
                 className="text-[#183F65] hover:text-[#5BA3D9] transition-colors font-medium text-xl"
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 whileHover={{ y: -2 }}
@@ -106,57 +78,11 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Language Switcher - Right side */}
-          <div className="hidden md:block dropdown dropdown-end z-10">
-            <motion.div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-md rounded-full bg-[#D4EBF8] hover:bg-[#B8D8F0] px-4"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Globe size={20} className="text-[#183F65]" />
-              <span className="text-base font-medium text-[#183F65]">
-                {languages.find(l => l.code === locale)?.flag}
-              </span>
-            </motion.div>
-            <ul tabIndex={0} className="dropdown-content menu bg-white rounded-box z-[1] w-36 p-2 shadow-lg border border-[#D4EBF8] mt-2">
-              {languages.map((lang) => (
-                <li key={lang.code}>
-                  <button
-                    onClick={() => switchLanguage(lang.code)}
-                    className={`flex items-center gap-3 py-2 ${locale === lang.code ? 'bg-[#D4EBF8]' : ''}`}
-                  >
-                    <span className="text-lg">{lang.flag}</span>
-                    <span className="text-base font-medium text-[#183F65]">{lang.label}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Spacer for layout balance */}
+          <div className="hidden md:block w-[52px]" />
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-4">
-            {/* Mobile Language Switcher */}
-            <div className="dropdown dropdown-end">
-              <button tabIndex={0} className="btn btn-ghost btn-md btn-circle bg-[#D4EBF8]">
-                <Globe size={22} className="text-[#183F65]" />
-              </button>
-              <ul tabIndex={0} className="dropdown-content menu bg-white rounded-box z-[1] w-36 p-2 shadow-lg border border-[#D4EBF8] mt-2">
-                {languages.map((lang) => (
-                  <li key={lang.code}>
-                    <button
-                      onClick={() => switchLanguage(lang.code)}
-                      className={`flex items-center gap-3 py-2 ${locale === lang.code ? 'bg-[#D4EBF8]' : ''}`}
-                    >
-                      <span className="text-lg">{lang.flag}</span>
-                      <span className="text-base">{lang.label}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+          <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="btn btn-ghost btn-md btn-circle bg-[#D4EBF8]"
@@ -186,7 +112,7 @@ export default function Navigation() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    onClick={() => handleNavClick(item)}
+                    onClick={() => handleNavClick(item.target)}
                     className="block w-full text-left py-3 px-4 rounded-lg text-[#183F65] hover:bg-[#D4EBF8] transition-colors text-xl font-medium"
                     style={{ fontFamily: "'Playfair Display', serif" }}
                   >

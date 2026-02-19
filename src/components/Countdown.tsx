@@ -1,6 +1,5 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Star, Sparkles } from 'lucide-react';
 import dynamic from 'next/dynamic';
@@ -57,22 +56,20 @@ interface CountdownRendererProps {
 }
 
 export default function Countdown() {
-  const t = useTranslations('countdown');
-
-  const renderer = ({ days, hours, minutes, seconds, completed }: CountdownRendererProps) => {
+  const renderer = ({ days, hours, completed }: CountdownRendererProps) => {
     if (completed) {
       return (
         <div className="text-center">
           <h3 className="font-serif text-4xl md:text-5xl text-[#183F65]">
-            {t('celebrationDay') || "It's Celebration Day!"}
+            It's Celebration Day!
           </h3>
         </div>
       );
     }
 
     const timeBlocks = [
-      { value: days, label: t('days') },
-      { value: hours, label: t('hours') },
+      { value: days, label: 'Days' },
+      { value: hours, label: 'Hours' },
     ];
 
     return (
@@ -127,9 +124,9 @@ export default function Countdown() {
           className="text-center mb-10"
         >
           <h2 className="text-4xl md:text-5xl text-[#183F65] mb-2">
-            {t('title')}
+            Countdown to the Bat Mitzvah
           </h2>
-          <p className="text-[#1F5486] text-lg">{t('subtitle')}</p>
+          <p className="text-[#1F5486] text-lg">June 18, 2026</p>
         </motion.div>
 
         {/* Countdown using react-countdown - dynamically loaded */}

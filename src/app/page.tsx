@@ -1,6 +1,5 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect, Suspense } from 'react';
 import Navigation from '@/components/Navigation';
@@ -15,7 +14,6 @@ const BAT_MITZVAH_DATE = new Date(2026, 5, 18, 9, 30, 0);
 
 // Floating Countdown Component
 function FloatingCountdown() {
-  const t = useTranslations('countdown');
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -74,15 +72,15 @@ function FloatingCountdown() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-2xl font-bold text-[#183F65]">{timeLeft.days}</span>
-                <span className="text-xs text-[#5BA3D9] uppercase">{t('days')}</span>
+                <span className="text-xs text-[#5BA3D9] uppercase">Days</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-2xl font-bold text-[#183F65]">{timeLeft.hours}</span>
-                <span className="text-xs text-[#5BA3D9] uppercase">{t('hours')}</span>
+                <span className="text-xs text-[#5BA3D9] uppercase">Hours</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-2xl font-bold text-[#183F65]">{timeLeft.minutes}</span>
-                <span className="text-xs text-[#5BA3D9] uppercase">{t('minutes')}</span>
+                <span className="text-xs text-[#5BA3D9] uppercase">Minutes</span>
               </div>
             </div>
 

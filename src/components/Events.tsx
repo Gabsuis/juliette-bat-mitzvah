@@ -1,8 +1,8 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import {
   BookOpen,
@@ -17,6 +17,41 @@ import {
   X,
   ExternalLink
 } from 'lucide-react';
+
+const eventData = {
+  service: {
+    title: 'Bat Mitzvah Service & Kiddush',
+    date: 'Thursday, June 18',
+    time: '9:30 AM - 12:00 PM',
+    lieu: 'Synagogue',
+    address: 'Aharon Chelouche Street 42, Tel Aviv',
+    description: 'Join us for the morning service as Juliette reads from the Torah for the first time, followed by a festive Kiddush luncheon.',
+  },
+  party: {
+    title: 'Celebration Dinner & Party',
+    date: 'Thursday, June 18',
+    time: 'Starting 6:30 PM',
+    lieu: 'Yordei Hasira',
+    address: 'Yordei Hasira 1, Tel Aviv',
+    description: 'The main event! An evening of dinner, dancing, and celebration under the Tel Aviv sky.',
+  },
+  shabbat: {
+    title: 'Shabbat Dinner',
+    date: 'Friday, June 19',
+    time: '7:00 PM',
+    lieu: 'At Home',
+    address: 'Manne Street 5, Apt 7, Tel Aviv',
+    description: 'An intimate Shabbat dinner with family and close friends to continue the celebrations.',
+  },
+  bar: {
+    title: 'Saturday Night Out',
+    date: 'Saturday, June 20',
+    time: '8:00 PM',
+    lieu: 'Juniper Bar',
+    address: 'Zvulun 7, Tel Aviv',
+    description: 'Wind down the weekend with drinks and good vibes at Juniper Bar. Adults only!',
+  },
+} as const;
 
 const eventIcons = {
   service: BookOpen,
@@ -91,21 +126,22 @@ const FloatingStars = () => {
   );
 };
 
+type EventKey = keyof typeof eventData;
+
 // Event Modal Component
 const EventModal = ({
   eventKey,
   isOpen,
   onClose,
-  t
 }: {
-  eventKey: string;
+  eventKey: EventKey;
   isOpen: boolean;
   onClose: () => void;
-  t: (key: string) => string;
 }) => {
-  const mapsUrl = eventMapsUrls[eventKey as keyof typeof eventMapsUrls];
-  const colors = eventColors[eventKey as keyof typeof eventColors];
-  const Icon = eventIcons[eventKey as keyof typeof eventIcons];
+  const event = eventData[eventKey];
+  const mapsUrl = eventMapsUrls[eventKey];
+  const colors = eventColors[eventKey];
+  const Icon = eventIcons[eventKey];
 
   return (
     <AnimatePresence>
@@ -136,8 +172,8 @@ const EventModal = ({
             {/* Header Image */}
             <div className="relative h-48 overflow-hidden rounded-t-3xl">
               <Image
-                src={eventImages[eventKey as keyof typeof eventImages]}
-                alt={t(`${eventKey}.title`)}
+                src={eventImages[eventKey]}
+                alt={event.title}
                 fill
                 className="object-cover"
               />
@@ -159,11 +195,11 @@ const EventModal = ({
                     <Icon className="w-5 h-5 text-white" />
                   </div>
                   <span className="text-white/90 text-lg font-medium">
-                    {t(`${eventKey}.date`)}
+                    {event.date}
                   </span>
                 </div>
                 <h3 className="text-3xl md:text-4xl text-white font-serif">
-                  {t(`${eventKey}.title`)}
+                  {event.title}
                 </h3>
               </div>
             </div>
@@ -176,8 +212,8 @@ const EventModal = ({
                   <Clock className="w-6 h-6 text-[#2B6BA8]" />
                 </div>
                 <div>
-                  <p className="text-sm text-[#5BA3D9] font-medium uppercase tracking-wide">{t('modal.time')}</p>
-                  <p className="text-xl text-[#183F65] font-semibold">{t(`${eventKey}.time`)}</p>
+                  <p className="text-sm text-[#5BA3D9] font-medium uppercase tracking-wide">Time</p>
+                  <p className="text-xl text-[#183F65] font-semibold">{event.time}</p>
                 </div>
               </div>
 
@@ -188,9 +224,9 @@ const EventModal = ({
                     <MapPin className="w-6 h-6 text-[#2B6BA8]" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-[#5BA3D9] font-medium uppercase tracking-wide">{t('modal.location')}</p>
-                    <p className="text-xl text-[#183F65] font-semibold">{t(`${eventKey}.lieu`)}</p>
-                    <p className="text-[#1F5486] mt-1">{t(`${eventKey}.address`)}</p>
+                    <p className="text-sm text-[#5BA3D9] font-medium uppercase tracking-wide">Location</p>
+                    <p className="text-xl text-[#183F65] font-semibold">{event.lieu}</p>
+                    <p className="text-[#1F5486] mt-1">{event.address}</p>
                   </div>
                 </div>
                 {mapsUrl && (
@@ -203,7 +239,7 @@ const EventModal = ({
                     whileTap={{ scale: 0.98 }}
                   >
                     <MapPin size={18} />
-                    {t('modal.openMaps')}
+                    Open in Google Maps
                     <ExternalLink size={16} />
                   </motion.a>
                 )}
@@ -212,7 +248,7 @@ const EventModal = ({
               {/* Description */}
               <div className="text-center pt-4 border-t border-[#D4EBF8]">
                 <p className="text-lg text-[#183F65] leading-relaxed italic">
-                  "{t(`${eventKey}.description`)}"
+                  "{event.description}"
                 </p>
               </div>
 
@@ -234,15 +270,23 @@ const EventModal = ({
   );
 };
 
+const allEvents: EventKey[] = ['service', 'party', 'shabbat', 'bar'];
+
+const eventsByRef: Record<string, EventKey[]> = {
+  default: ['service', 'party', 'shabbat', 'bar'],
+  b: ['service', 'party', 'bar'],
+  c: ['service', 'party'],
+};
+
 export default function Events() {
-  const t = useTranslations('events');
-  const locale = useLocale();
+  const searchParams = useSearchParams();
+  const refParam = searchParams.get('ref') || 'default';
+  const events = eventsByRef[refParam] || eventsByRef.default;
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [activeEvent, setActiveEvent] = useState<number>(0);
-  const [modalEvent, setModalEvent] = useState<string | null>(null);
-
-  const events = ['service', 'party', 'shabbat', 'bar'] as const;
+  const [modalEvent, setModalEvent] = useState<EventKey | null>(null);
 
   return (
     <section
@@ -289,9 +333,9 @@ export default function Events() {
             <Calendar size={28} className="text-[#2B6BA8]" />
           </motion.div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl text-[#183F65] mb-4">
-            {t('title')}
+            The Celebrations
           </h2>
-          <p className="text-[#1F5486] text-xl">{t('subtitle')}</p>
+          <p className="text-[#1F5486] text-xl">Special moments to share with Juliette</p>
           <div className="romantic-divider">
             <Star size={16} className="text-[#5BA3D9] fill-[#B8D8F0]" />
           </div>
@@ -364,7 +408,7 @@ export default function Events() {
                         isActive ? 'text-[#183F65]' : 'text-[#5BA3D9]'
                       }`}
                     >
-                      {t(`${eventKey}.date`).split(',')[0]}
+                      {eventData[eventKey].date.split(',')[0]}
                     </motion.div>
                   </motion.button>
                 );
@@ -376,6 +420,7 @@ export default function Events() {
         {/* Events grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {events.map((eventKey, index) => {
+            const event = eventData[eventKey];
             const Icon = eventIcons[eventKey];
             const colors = eventColors[eventKey];
             const isActive = index === activeEvent;
@@ -407,7 +452,7 @@ export default function Events() {
                     {/* Event image */}
                     <Image
                       src={eventImages[eventKey]}
-                      alt={t(`${eventKey}.title`)}
+                      alt={event.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
@@ -434,10 +479,10 @@ export default function Events() {
                     {/* Event title */}
                     <div className="absolute bottom-4 left-5 right-5 z-10">
                       <span className="text-white/90 text-base font-medium tracking-wider uppercase">
-                        {t(`${eventKey}.date`)}
+                        {event.date}
                       </span>
                       <h3 className="text-3xl md:text-4xl text-white mt-1 drop-shadow-md" style={{ fontFamily: "'Pacifico', cursive" }}>
-                        {t(`${eventKey}.title`)}
+                        {event.title}
                       </h3>
                     </div>
                   </div>
@@ -451,7 +496,7 @@ export default function Events() {
                         whileHover={{ scale: 1.05 }}
                       >
                         <Clock size={18} className="text-[#2B6BA8]" />
-                        <span className="text-lg font-medium text-[#183F65]">{t(`${eventKey}.time`)}</span>
+                        <span className="text-lg font-medium text-[#183F65]">{event.time}</span>
                       </motion.div>
                     </div>
 
@@ -463,10 +508,10 @@ export default function Events() {
                         </div>
                         <div>
                           <p className="text-lg font-semibold text-[#183F65]">
-                            {t(`${eventKey}.lieu`)}
+                            {event.lieu}
                           </p>
                           <p className="text-base text-[#1F5486]">
-                            {t(`${eventKey}.address`)}
+                            {event.address}
                           </p>
                         </div>
                       </div>
@@ -474,7 +519,7 @@ export default function Events() {
 
                     {/* Description */}
                     <p className="text-[#183F65] text-lg leading-relaxed mb-6">
-                      {t(`${eventKey}.description`)}
+                      {event.description}
                     </p>
 
                     {/* View details button */}
@@ -485,7 +530,7 @@ export default function Events() {
                       whileTap={{ scale: 0.98 }}
                     >
                       <Star size={20} className="fill-white/50" />
-                      {t('viewDetails')}
+                      View Details
                     </motion.button>
 
                     {/* Decorative bottom stars */}
@@ -517,7 +562,6 @@ export default function Events() {
           eventKey={modalEvent}
           isOpen={!!modalEvent}
           onClose={() => setModalEvent(null)}
-          t={t}
         />
       )}
     </section>

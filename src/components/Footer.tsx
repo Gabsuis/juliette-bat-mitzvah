@@ -1,13 +1,10 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Footer() {
-  const t = useTranslations('footer');
-
   return (
     <footer className="relative bg-gradient-to-b from-[#F0F7FF] to-[#D4EBF8]">
       {/* Decorative top border */}
@@ -48,7 +45,7 @@ export default function Footer() {
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          {t('hashtag')}
+          #JulietteBatMitzvah
         </motion.p>
 
         {/* Decorative stars */}
@@ -92,7 +89,7 @@ export default function Footer() {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          {t('madeWith')}{' '}
+          Made with love{' '}
           <Star size={14} className="text-[#5BA3D9] fill-[#5BA3D9]" />
         </motion.p>
 
