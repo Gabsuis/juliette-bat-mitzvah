@@ -7,16 +7,22 @@ export async function POST(request: NextRequest) {
     const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
 
     if (GOOGLE_SHEETS_WEBHOOK_URL) {
+      // Google Apps Script returns a 302 redirect on POST requests.
+      // We need to follow the redirect manually.
       const response = await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
+        redirect: 'follow',
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit to Google Sheets');
+      // Google Apps Script may return 302 -> 200, or directly 200.
+      // Any 2xx or 3xx with a successful redirect is fine.
+      if (!response.ok && response.status !== 302) {
+        console.error('Google Sheets response:', response.status, await response.text().catch(() => ''));
+        throw new Error(`Failed to submit to Google Sheets (status: ${response.status})`);
       }
     } else {
       // For development/testing - just log the data
@@ -32,44 +38,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
-/*
-=== GOOGLE APPS SCRIPT FOR YOUR GOOGLE SHEET ===
-Copy this script to your Google Sheet's Apps Script editor:
-
-function doPost(e) {
-  try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Confirmation Site");
-    var data = JSON.parse(e.postData.contents);
-
-    sheet.appendRow([
-      data.timestamp,
-      data.ref,
-      data.name,
-      data.email,
-      data.phone,
-      data.adults,
-      data.kids,
-      data.kidsAges,
-      data.message,
-      data.service,
-      data.party,
-      data.shabbat,
-      data.bar
-    ]);
-
-    return ContentService
-      .createTextOutput(JSON.stringify({ success: true }))
-      .setMimeType(ContentService.MimeType.JSON);
-  } catch (error) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ success: false, error: error.message }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}
-
-Deploy as:
-- Execute as: Me
-- Who has access: Anyone
-
-*/

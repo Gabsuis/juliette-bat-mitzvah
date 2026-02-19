@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 
@@ -46,21 +45,22 @@ export default function Navigation() {
       <nav className="max-w-6xl mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="z-10">
-            <motion.div
-              className="flex items-center gap-2 cursor-pointer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+          <motion.button
+            onClick={() => handleNavClick('hero')}
+            className="z-10 flex-shrink-0"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <div className="w-11 h-11 rounded-full overflow-hidden border-2 border-[#B8D8F0]">
               <Image
-                src="/logo.png"
+                src="/gallery/WhatsApp Image 2026-02-18 at 16.23.38.jpeg"
                 alt="Juliette"
-                width={52}
-                height={52}
-                className="rounded-full"
+                width={44}
+                height={44}
+                className="object-cover w-full h-full"
               />
-            </motion.div>
-          </Link>
+            </div>
+          </motion.button>
 
           {/* Desktop Navigation - Centered */}
           <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
@@ -79,7 +79,7 @@ export default function Navigation() {
           </div>
 
           {/* Spacer for layout balance */}
-          <div className="hidden md:block w-[52px]" />
+          <div className="hidden md:block w-[44px]" />
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">

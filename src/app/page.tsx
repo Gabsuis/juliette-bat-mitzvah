@@ -7,6 +7,7 @@ import Hero from '@/components/Hero';
 import Events from '@/components/Events';
 import RSVPForm from '@/components/RSVPForm';
 import Footer from '@/components/Footer';
+import SectionBanner from '@/components/SectionBanner';
 import { Star, Calendar } from 'lucide-react';
 
 // Bat Mitzvah date: June 18, 2026 at 9:30 AM
@@ -143,9 +144,13 @@ export default function HomePage() {
 
       <Hero />
 
+      <SectionBanner src="/gallery/WhatsApp Image 2026-02-18 at 16.23.35.jpeg" />
+
       <Suspense fallback={null}>
         <Events />
       </Suspense>
+
+      <SectionBanner src="/gallery/WhatsApp Image 2026-02-18 at 16.23.36.jpeg" />
 
       <Suspense fallback={null}>
         <RSVPForm />

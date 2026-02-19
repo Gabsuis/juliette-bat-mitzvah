@@ -18,13 +18,15 @@ export default function Footer() {
           viewport={{ once: true }}
           className="mb-4"
         >
-          <Image
-            src="/logo.png"
-            alt="Juliette"
-            width={100}
-            height={100}
-            className="mx-auto rounded-full"
-          />
+          <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-[#B8D8F0] mx-auto">
+            <Image
+              src="/gallery/WhatsApp Image 2026-02-18 at 16.23.38.jpeg"
+              alt="Juliette"
+              width={96}
+              height={96}
+              className="object-cover w-full h-full"
+            />
+          </div>
         </motion.div>
 
         {/* Names */}
