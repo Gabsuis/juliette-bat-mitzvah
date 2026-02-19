@@ -144,8 +144,6 @@ export default function HomePage() {
 
       <Hero />
 
-      <SectionBanner src="/gallery/WhatsApp Image 2026-02-18 at 16.23.35.jpeg" />
-
       <Suspense fallback={null}>
         <Events />
       </Suspense>
