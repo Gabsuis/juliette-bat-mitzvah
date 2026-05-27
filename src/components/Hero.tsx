@@ -78,9 +78,9 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
-          className="relative mb-12 md:mb-16"
+          className="relative mb-8"
         >
-          <div className="relative w-80 h-80 sm:w-96 sm:h-96 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] mx-auto">
+          <div className="relative w-72 h-72 md:w-96 md:h-96 mx-auto">
             {/* Elegant photo frame decoration */}
             <motion.div
               className="absolute inset-0 rounded-full border-2 border-[#5BA3D9]/30"

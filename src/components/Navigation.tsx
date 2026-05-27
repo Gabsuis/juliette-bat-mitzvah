@@ -53,7 +53,7 @@ export default function Navigation() {
           >
             <div className="w-11 h-11 rounded-full overflow-hidden border-2 border-[#B8D8F0]">
               <Image
-                src="/gallery/WhatsApp Image 2026-02-18 at 16.23.38.jpeg"
+                src="/gallery/WhatsApp Image 2026-05-26 at 00.42.08 (1).jpeg"
                 alt="Juliette"
                 width={44}
                 height={44}
