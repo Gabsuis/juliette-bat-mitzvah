@@ -148,7 +148,7 @@ export default function HomePage() {
         <Events />
       </Suspense>
 
-      <SectionBanner src="/gallery/juliette pic .jpeg" />
+      <SectionBanner src="/gallery/WhatsApp Image 2026-05-26 at 00.42.08.jpeg" />
 
       <Suspense fallback={null}>
         <RSVPForm />

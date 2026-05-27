@@ -70,7 +70,7 @@ const eventColors = {
 const eventImages = {
   service: '/syna.jpeg',
   party: '/party.jpeg',
-  shabbat: '/gallery/hero pic.jpeg',
+  shabbat: '/syna.jpeg',
   bar: '/bar.jpeg',
 };
 
@@ -170,7 +170,7 @@ const EventModal = ({
             transition={{ type: 'spring', damping: 25 }}
           >
             {/* Header Image */}
-            <div className="relative h-48 overflow-hidden rounded-t-3xl">
+            <div className="relative h-64 md:h-72 overflow-hidden rounded-t-3xl">
               <Image
                 src={eventImages[eventKey]}
                 alt={event.title}
@@ -418,7 +418,7 @@ export default function Events() {
         </motion.div>
 
         {/* Events grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
           {events.map((eventKey, index) => {
             const event = eventData[eventKey];
             const Icon = eventIcons[eventKey];
@@ -448,7 +448,7 @@ export default function Events() {
                   </div>
 
                   {/* Card header with image */}
-                  <div className="relative h-56 overflow-hidden">
+                  <div className="relative h-72 md:h-80 lg:h-96 overflow-hidden">
                     {/* Event image */}
                     <Image
                       src={eventImages[eventKey]}

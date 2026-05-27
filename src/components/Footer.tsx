@@ -16,14 +16,14 @@ export default function Footer() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-4"
+          className="mb-6"
         >
-          <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-[#B8D8F0] mx-auto">
+          <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-[#B8D8F0] mx-auto shadow-lg">
             <Image
-              src="/gallery/WhatsApp Image 2026-02-18 at 16.23.38.jpeg"
+              src="/gallery/WhatsApp Image 2026-05-26 at 00.42.08 (2).jpeg"
               alt="Juliette"
-              width={96}
-              height={96}
+              width={176}
+              height={176}
               className="object-cover w-full h-full"
             />
           </div>

@@ -19,7 +19,7 @@ export default function SectionBanner({ src, alt = '' }: SectionBannerProps) {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : {}}
       transition={{ duration: 0.8 }}
-      className="relative w-full h-48 md:h-64 lg:h-80 overflow-hidden"
+      className="relative w-full h-72 md:h-96 lg:h-[32rem] overflow-hidden my-8 md:my-12"
     >
       <Image
         src={src}
